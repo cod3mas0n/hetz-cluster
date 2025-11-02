@@ -1,0 +1,19 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: cnpg-cluster
+
+spec:
+  instances: 3
+  storage:
+    storageClass: local-path
+    size: 5Gi
+  imageCatalogRef:
+    apiGroup: postgresql.cnpg.io
+    kind: ClusterImageCatalog
+    name: postgresql
+    major: 17
+
+  enableSuperuserAccess: true
+  superuserSecret:
+    name: superuser-secret

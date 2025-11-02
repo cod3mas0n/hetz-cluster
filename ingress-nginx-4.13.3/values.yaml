@@ -109,7 +109,7 @@ controller:
   ## Disabled by default
   hostPort:
     # -- Enable 'hostPort' or not
-    enabled: true
+    enabled: false
     ports:
       # -- 'hostPort' http port
       http: 80
@@ -561,9 +561,9 @@ controller:
     appProtocol: true
     nodePorts:
       # -- Node port allocated for the external HTTP listener. If left empty, the service controller allocates one from the configured node port range.
-      http: ""
+      http: "30080"
       # -- Node port allocated for the external HTTPS listener. If left empty, the service controller allocates one from the configured node port range.
-      https: ""
+      https: "30443"
       # -- Node port mapping for external TCP listeners. If left empty, the service controller allocates them from the configured node port range.
       # Example:
       # tcp:
