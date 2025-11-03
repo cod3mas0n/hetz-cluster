@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-backup-cm
+  namespace: database
+data:
+
+  TZ: "Asia/Tehran"
+  POSTGRES_URI: "cnpg-cluster-r.database.svc"

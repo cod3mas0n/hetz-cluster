@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: postgres-backup
+  namespace: database
+spec:
+  template:
+    spec:
+      # imagePullSecrets:
+      #   - name: regcred
+      containers:
+      - image: docker.io/alimehr75/postgres-backup:latest
+        imagePullPolicy: Always
+        name: postgres-backup
+        envFrom:
+          - configMapRef:
+              name: postgres-backup-cm
+              optional: false
+          - secretRef:
+              name: postgres-backup-secret
+              optional: false
+        resources:
+          requests:
+            cpu: '1'
+            memory: 1Gi
+          limits:
+            cpu: '2'
+            memory: 2Gi
+      restartPolicy: Never
