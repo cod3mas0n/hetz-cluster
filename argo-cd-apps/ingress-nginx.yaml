@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-nginx
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ingress-nginx
+  sources:
+    - path: 'ingress-nginx-4.13.3'
+      repoURL: 'https://github.com/cod3mas0n/hetz-cluster.git'
+      targetRevision: main
+      helm:
+        releaseName: ingress-nginx
+        valueFiles:
+          - values.yaml
+
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+    retry:
+      limit: 2
+      backoff:
+        duration: 5s
+        maxDuration: 3m0s
+        factor: 2
