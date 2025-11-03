@@ -1348,9 +1348,9 @@ grafana:
     ## Secret must be manually created in the namespace
     ##
     tls:
-      - secretName: grafana.semsong.ir-tls
+      - secretName: grafana.sentry4.ir-tls
         hosts:
-        - grafana.semsong.ir
+          - grafana.sentry4.ir
 
   # # To make Grafana persistent (Using Statefulset)
   # #
